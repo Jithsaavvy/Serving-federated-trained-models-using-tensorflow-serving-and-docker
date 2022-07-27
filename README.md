@@ -1,6 +1,6 @@
 # Deploying federated trained models using tensorflow serving and docker
 
-This project proclaims a **pipeline** that train models using federated learning and deploy the trained models using `tensorflow serving` and `docker`, which can be accessed by an `endpoint`.
+This project proclaims a **pipeline** that trains models using federated learning and deploys the trained models using `tensorflow serving` and `docker`, which can be accessed by an `endpoint`.
 
 ![pipeline](./images/pipeline.jpeg)
 
@@ -13,7 +13,7 @@ This project proclaims a **pipeline** that train models using federated learning
 
 ## Description
 
-The project is an amalgamation of **research** (federated training and comparison with normal training), **development** (data preprocesing, model training etc.) and **deployment** (model serving). Nowadays, the requirement to deploy and deliver any machine learning models has become a top priority in the industry.
+The project is an amalgamation of **research** (federated training and comparison with normal training), **development** (data preprocessing, model training etc.) and **deployment** (model serving). Nowadays, the requirement to deploy and deliver any machine learning models has become a top priority in the industry.
 
 [Federated learning](https://en.wikipedia.org/wiki/Federated_learning) is a machine learning technique that trains an algorithm across multiple decentralized edge devices or servers locally without exchanging the data. This works in contrast to traditional machine learning techniques that are centralized, uploading data from all sources to centralized server for training. It addresses serious isssues like data privacy etc.
 For the sake of simplicity and demonstration, `deep Convolutional Neural Network (convnet)` is trained on `MNIST` dataset in both federated and non-federated way. Training an MNIST model is quite simple, but how does it work when trained using federated learning and compare to conventional training? **Well**, the answer is what the project exemplifies.
