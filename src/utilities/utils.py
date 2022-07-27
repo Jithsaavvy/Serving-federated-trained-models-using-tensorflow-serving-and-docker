@@ -16,39 +16,11 @@ import tensorflow as tf
 from tensorflow.keras import Sequential, optimizers, losses, metrics
 from matplotlib import pyplot as plt
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, Dense
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 import tensorflow_addons as tfa
 import pickle
 from collections import OrderedDict
 import config
-
-def create_dir(sub_dir: str, method_name: str) -> Tuple[str, str]:
-    """
-    Creates directories for saving the model and results.
-
-    Parameters
-    ----------
-    sub_dir: str
-        Name of sub-directory
-    method_name: str
-        Name of the method (Eg: Normal or FL training...)
-
-    Returns
-    -------
-    model_dir, result_dir: Tuple[str, str]
-    """
-    this_dir = os.getcwd()
-    parent_dir = os.path.abspath(os.path.join(this_dir, os.pardir))
-    model_dir = os.path.join(parent_dir, sub_dir, method_name)
-    result_dir = os.path.join(sub_dir, method_name)
-
-    try:
-        os.makedirs(model_dir)
-        os.makedirs(result_dir)
-    except OSError as error:
-        print(error) 
-
-    return model_dir, result_dir
 
 @dataclass
 class Dataset:
@@ -198,6 +170,34 @@ class Model:
         model.add(Dense(self.num_classes, activation='softmax'))
         model.summary()
         return model
+
+def create_dir(sub_dir: str, method_name: str) -> Tuple[str, str]:
+    """
+    Creates directories for saving the model and results.
+
+    Parameters
+    ----------
+    sub_dir: str
+        Name of sub-directory
+    method_name: str
+        Name of the method (Eg: Normal or FL training...)
+
+    Returns
+    -------
+    model_dir, result_dir: Tuple[str, str]
+    """
+    this_dir = os.getcwd()
+    parent_dir = os.path.abspath(os.path.join(this_dir, os.pardir))
+    model_dir = os.path.join(parent_dir, sub_dir, method_name)
+    result_dir = os.path.join(sub_dir, method_name)
+
+    try:
+        os.makedirs(model_dir)
+        os.makedirs(result_dir)
+    except OSError as error:
+        print(error) 
+
+    return model_dir, result_dir
 
 def init_function(model: Model, 
                   processed_dataset: FederatedDataset) -> tff.computation:

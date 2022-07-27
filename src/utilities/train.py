@@ -78,7 +78,6 @@ class Training:
 
         return Metrics(train_accuracy, train_loss, val_accuracy, val_loss)
 
-    
     def federated_convnet_training_random(self) -> Metrics:
         """
         Federated training of random initialization model.
@@ -100,8 +99,9 @@ class Training:
         
         state = iterative_process.initialize()
         print("FL Training with random initialization started...")
-        metrics_instance: Metrics = utility(self.model, state, iterative_process, self.federatedDataset_.federated_train_data,
-                                    self.dataset_.x_test, self.dataset_.y_test)
+        metrics_instance: Metrics = utility(self.model, state, iterative_process, 
+                                            self.federatedDataset_.federated_train_data,
+                                            self.dataset_.x_test, self.dataset_.y_test)
         return metrics_instance
 
     def federated_convnet_training_pretrained(self) -> Metrics:
@@ -130,8 +130,9 @@ class Training:
                     non_trainable_weights=[
                     v.numpy() for v in pretrained_model.non_trainable_weights])
         print("FL Training with pretrained models started...")
-        metrics_instance: Metrics = utility(pretrained_model, state, iterative_process, self.federatedDataset_.federated_train_data,
-                                    self.dataset_.x_test, self.dataset_.y_test)
+        metrics_instance: Metrics = utility(pretrained_model, state, iterative_process,
+                                            self.federatedDataset_.federated_train_data,
+                                            self.dataset_.x_test, self.dataset_.y_test)
         return metrics_instance
 
     #Tip: Replacing if/else with python dicts.
