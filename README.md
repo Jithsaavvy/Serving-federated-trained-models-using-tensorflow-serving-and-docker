@@ -8,7 +8,7 @@ This project proclaims a **pipeline** that train models using federated learning
 
 - [@Jithin Sasikumar](https://www.github.com/Jithsaavvy)
 
-<h2 align="left">Languages and Tools:</h2>
+<h2 align="left">Languages and Tools</h2>
 <p align="left"><a href="https://www.python.org" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/></a><a href="https://www.tensorflow.org" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" alt="tensorflow" width="40" height="40"/></a><a href="https://www.docker.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/></a><a href="https://numpy.org/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/768px-NumPy_logo_2020.svg.png?20200723114325" alt="docker" width="95" height="43"/></a> </p>
 
 ## Description
@@ -16,7 +16,7 @@ This project proclaims a **pipeline** that train models using federated learning
 The project is an amalgamation of **research** (federated training and comparison with normal training), **development** (data preprocesing, model training etc.) and **deployment** (model serving). Nowadays, the requirement to deploy and deliver any machine learning models has become a top priority in the industry.
 
 [Federated learning](https://en.wikipedia.org/wiki/Federated_learning) is a machine learning technique that trains an algorithm across multiple decentralized edge devices or servers locally without exchanging the data. This works in contrast to traditional machine learning techniques that are centralized, uploading data from all sources to centralized server for training. It addresses serious isssues like data privacy etc.
-For the sake of simplicity and demonstration, `deep Convolutional neural network` is trained on `MNIST` dataset in both federated and non-federated way. Training an MNIST model is quite simple, but how does it work when trained using federated learning and compare to conventional training? **Well**, the answer is what the project exemplifies.
+For the sake of simplicity and demonstration, `deep Convolutional Neural Network (convnet)` is trained on `MNIST` dataset in both federated and non-federated way. Training an MNIST model is quite simple, but how does it work when trained using federated learning and compare to conventional training? **Well**, the answer is what the project exemplifies.
 
 [TensorFlow Serving](https://www.tensorflow.org/tfx/guide/serving) is a high-performance serving system for machine learning models which is designed for production environments. It makes it easy to deploy new algorithms and models with the same server architecture and APIs. For more information, click [here](https://www.tensorflow.org/tfx/tutorials/serving/rest_simple). [Docker](https://www.docker.com/) eases the developers to package applications or software which can be easily reproduced on another machine. It uses containers to pack any applications with its dependencies to deploy in another environment.
 
@@ -29,7 +29,7 @@ Secondly, the preprocessed dataset is transformed in the format that favors fede
 Federated training is done in two ways:
 1. FL training of randomly initialized model (respective model doesn't know anything about the data).
 2. FL training of pre-trained model (respective model is pre-trained (i.e.) They are normally trained without FL, so that the models will know something about the data before federated training). For that purpose, models `(.h5)` saved in [pretrained_models](./pretrained_models/) are used. The trained weights are pushed to the initial state of the federated training process.
-    - **Note:** Pre-training doesn't happen completely (i.e.) The models are not trained to full `epochs` with highest accuracy. In this case, two models pre-trained with $70\%$ and $80\%$ `validation accuracy` are used for FL training.
+    - **Note:** Pre-training doesn't happen completely (i.e.) The models are not trained to full `epochs` with highest accuracy. In this case, two models pre-trained with $70\\%$ and $80\\%$ `validation accuracy` are used for FL training.
 
 Each model is trained for `100 rounds` for FL. After training, they are saved to [saved_models](./saved_models/)  in `.pb` format. The existing directory structure of [saved_models](./saved_models/) should be followed in order to deploy using `tf-serving`. The respective training, validation metrics and plots are saved to the [results](./results/) directory. The complete source code is found at [src](./src/) directory. Refer each `documentation` for detailed understanding of the code. The detailed analysis of results, inferences, their comparison with visualizations are provided in [Result_analysis.ipynb](./Result_analysis.ipynb)  
 
